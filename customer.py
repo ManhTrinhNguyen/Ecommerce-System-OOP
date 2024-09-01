@@ -1,4 +1,5 @@
 from shopping_cart import Shopping_Cart 
+from order import Order
 from product import Product
 
 class Customer: 
@@ -26,5 +27,19 @@ class Customer:
   def view_cart(self):
     return self.cart.items
   
+  # Check out 
+  def checkout(self): 
+    if self.cart.get_total() > 0:
+      order = Order(self, self.cart.items) # Create Order by using Order class 
+      order.update_status('Shipped')
+      return order
 
 
+
+
+product1 = Product(1, "Laptop", 999.99, 10)
+product2 = Product(2, "Smartphone", 499.99, 5)
+customer1 = Customer(101, "Alice", "alice@example.com")
+customer1.add_to_cart(product1, 1)
+customer1.add_to_cart(product2, 1)
+print(customer1.checkout())
