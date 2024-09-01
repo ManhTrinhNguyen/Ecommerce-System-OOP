@@ -29,10 +29,13 @@ class Customer:
   
   # Check out 
   def checkout(self): 
-    if self.cart.get_total() > 0:
-      order = Order(self, self.cart.items) # Create Order by using Order class 
-      order.update_status('Shipped')
+    if self.cart.get_total() > 0: # Check if any item in the cart
+      order = Order(self, items = self.cart.items.copy()) # Create Order by using Order class 
+      self.cart.clear_cart() # use clear_cart() from shopping_car Class to clear cart after check out
       return order
+    else: # If no item in cart
+      return 'Your cart is empty'
+    
 
 
 
