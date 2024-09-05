@@ -12,6 +12,11 @@ class Order:
     self.status = 'Pending'
 
   # Method 
+  def __eq__(self, other: object) -> bool: # This function __eq__ allow you to compare Order Object based on their attribute rather than their memory address
+    if not isinstance(other, Order):
+      return False
+    return self.customer == other.customer and self.items == other.items
+  
   def __str__(self):
     return f"Order({self.order_id}, {self.customer.name}, Total: ${self.total}, Status: {self.status})"
 
