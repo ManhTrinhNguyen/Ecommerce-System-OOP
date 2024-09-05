@@ -36,13 +36,3 @@ class Customer:
     else: # If no item in cart
       return 'Your cart is empty'
     
-
-
-
-
-product1 = Product(1, "Laptop", 999.99, 10)
-product2 = Product(2, "Smartphone", 499.99, 5)
-customer1 = Customer(101, "Alice", "alice@example.com")
-customer1.add_to_cart(product1, 1)
-customer1.add_to_cart(product2, 1)
-print(customer1.checkout())

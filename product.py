@@ -14,9 +14,11 @@ class Product:
   def reduce_stock(self, quantity):
     if self.quantity >= quantity: # Check if Quantity of available stock is greater the given quantity want to reduce 
       self.quantity = self.quantity - quantity # If True => Reduce given quantity want to reduce 
-      return f"Reduced {quantity} amount of stocks"
+      print(f"Reduced {quantity} amount of stocks")
+      return True
     else:
-      return f"Not enough stock to reduce available stock is {self.quantity}" # If false return Not Enough stock 
+      print(f"Not enough stock to reduce available stock is {self.quantity}") # If false return Not Enough stock 
+      return False
     
   # Increase Stock funtion 
   def increase_stock(self, quantity):
