@@ -15,6 +15,7 @@ class Customer:
     # Check if the amount of stock available to add to cart 
     if product.reduce_stock(quantity): # Use reduce_stock method from Product class . The reason reducing stock is take the stock from Product to the customer cart 
       return self.cart.add_product(product, quantity) # Use add_product method from Shopping_Cart class 
+    
       
   # Remove product from cart 
   def remove_from_cart(self, product):
@@ -29,10 +30,13 @@ class Customer:
   
   # Check out 
   def checkout(self): 
-    if self.cart.get_total() > 0: # Check if any item in the cart
+    if self.cart.get_total() == 'Your cart is empty': # Check if any item in the cart
+      return 'Your cart is empty'
+    else: # If item in cart
       order = Order(self, items = self.cart.items.copy()) # Create Order by using Order class 
       self.cart.clear_cart() # use clear_cart() from shopping_car Class to clear cart after check out
       return order
-    else: # If no item in cart
-      return 'Your cart is empty'
+      
+    
+    
     
