@@ -10,6 +10,7 @@ class Test_Customer:
     print(f"Setting up method {method}")
     self.customer = Customer(101, "Alice", "alice@example.com")
     self.product = Product(1, "Laptop", 999.99, 10)
+      
 
   def test_add_to_cart(self):
     assert self.customer.add_to_cart(self.product, 5) == "Laptop added to the cart with 5 quantity"
@@ -42,4 +43,4 @@ class Test_Customer:
     assert self.customer.add_to_cart(self.product, 5) == "Laptop added to the cart with 5 quantity"
     # Laptop in cart with 5 quantity
     order = Order(self.customer, self.customer.cart.items.copy())
-    assert self.customer.checkout() == order
+    assert self.customer.checkout() == order # There will occur an error if you try to compare 2 Order object directly . To fix it create __eq__ to compare base on their attribute in Order class
